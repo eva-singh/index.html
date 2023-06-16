@@ -26,7 +26,6 @@ break pickle.dump(L,F)
 def displaymenu():
 with open('ecar.dat','rb')as F:
 data=pickle.load(F)
-Project: Restaurant Management System Developed By Ankush, Chaitanya, Eva Page:#7/18
          for i in data:
             print(i)
 def editrecord():
@@ -70,7 +69,7 @@ if reply==4:
 if reply==5:
     break
 
- number)'))
+
 n=int(input('which record would you like to delete? (enter item
             for i in L:
                 if i[0]==n:
