@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 7.4.4.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="00:00:00"/>
+	<style type="text/css">
+		@page { size: 8.27in 11.69in; margin: 0.79in }
+		p { line-height: 115%; margin-bottom: 0.1in; background: transparent }
+		pre { font-family: "Liberation Mono", monospace; font-size: 10pt; background: transparent }
+	</style>
+</head>
+<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><pre>import random
+computer_list=['stone','paper','scissor']
+computer=[0]
+you=[0]
+name=input('Enter your name here: ')
+print(&quot;Hi&quot;,name,&quot;, welcome to the game of stone,paper,scissors!&quot;)
+hel_p=input(&quot;Would you like to know how to play?(yes/no): &quot;).lower()
+if hel_p==&quot;yes&quot;:
+    print(&quot;\'STONE\' is greater than \'SCISSOR\' \n\'PAPER\' is greater than \'STONE\' \n\'SCISSOR\' is greater than \'PAPER\'&quot;)
+else:
+    print(&quot;Alright!&quot;)
+number=int(input(&quot;How many rounds would you like to play ?(enter digits): &quot;))
+for i in range(0,number):
+    object = input('Please type any one object from \'Stone\',\'Paper\' and \'Scissor\' here: ').lower()
+    if object == 'stone':
+        computer_output = random.choice(computer_list)
+        print(&quot;The computer has chosen&quot;,&quot;\'&quot;, '\u300E', computer_output.upper(), '\u300F',&quot;\'&quot;)
+        if computer_output == 'paper':
+            print(&quot;As \'paper\' is greater than \'stone\',&quot;)
+            print(&quot;\u3014 The computer \u3015 has won this round \u2755&quot;)
+            for value in computer:
+                value+=1
+            print(&quot;The computer's points are&quot; ,value)
+            computer.append(value)
+        elif computer_output=='scissor':
+            print('As \'stone\' is greater than \'scissor\',\n \u3014 You \u3015 have won this round u2755')
+            for point in you:
+                point+=1
+            print(&quot;Your points are&quot;,point)
+            you.append(point)
+        else:
+            print(&quot;As both have chosen \'stone\', it's a tie for this round.&quot;)
+    if object!=&quot;stone&quot; and object!=&quot;scissor&quot; and object!=&quot;paper&quot;:
+        print(&quot;Please enter only the required objects (stone/paper/scissor). Kindly restart the game&quot; ) 
+        break
+    elif object == 'paper':
+        computer_output = random.choice(computer_list)
+        print(&quot;The computer has chosen&quot;,&quot;\'&quot;, '\u300E', computer_output.upper(), '\u300F', &quot;\'&quot;)
+        if computer_output == 'scissor':
+            print('As \'scissor\' is greater than \'paper\',')
+            print('\u3014 The computer \u3015 has won this round \u2755')
+            for value in computer:
+                value+=1
+            print(&quot;The computer's points are&quot;,value)
+            computer.append(value)
+        elif computer_output==&quot;stone&quot;:
+            print('As \'paper\' is greater than \'stone\',\n \u3014 You \u3015 have won this round \u2755')
+            for point in you:
+                point+=1
+            print(&quot;Your points are&quot;,point)
+            you.append(point)
+        else:
+            print(&quot;As both have chosen \'paper\', it's a tie for this round.&quot;)
+        if object!=&quot;stone&quot; and object!=&quot;scissor&quot; and object!=&quot;paper&quot;:
+            print(&quot;Please enter only the required objects (stone/paper/scissor). Kindly restart the game.&quot; ) 
+            break
+    elif object == 'scissor' :
+        computer_output = random.choice(computer_list)
+        print(&quot;The computer has chosen&quot;,&quot;\'&quot;, '\u300E', computer_output.upper(), '\u300F', &quot;\'&quot;)
+        if computer_output == 'stone':
+            print('As \'stone\' is greater than \'scissor\',')
+            print('\u3014 The computer \u3015 has won this round \u2755')
+            for value in computer:
+                value+=1
+            print(&quot;The computer's points are&quot; ,value)
+            computer.append(value)
+        elif computer_output==&quot;paper&quot;:
+            print('As \'scissor\' is greater than \'paper\', \n \u3014 You \u3015 have won this round \u2755')
+            for point in you:
+                point+=1
+            print(&quot;Your points are&quot;, point)
+            you.append(point)
+        else:
+            print(&quot;As both have chosen \'scissor\', it's a tie for this round.&quot;)
+        if object!=&quot;stone&quot; and object!=&quot;scissor&quot; and object!=&quot;paper&quot;:
+            print(&quot;Please enter only the required objects (stone/paper/scissor). Kindly restart the game&quot; ) 
+            break
+if object==&quot;stone&quot; or object==&quot;paper&quot; or object==&quot;scissor&quot;:       
+    final_point=0
+    if len(computer)&gt;len(you):
+        print(&quot;As the computer has&quot;, len(computer)-len(you), &quot;more point(s) than you, it has won the game! &quot; &quot;\nThank you for playing!&quot;)
+    elif len(you)&gt;len(computer):
+        print(&quot;As you have&quot;, len(you)-len(computer), &quot;more point(s) than the computer, you have won the game!&quot; &quot;\nThank you for playing!&quot;)
+    else:
+        print(&quot;It's a tie!&quot; &quot;\nThank you for playing the game!&quot;)</pre>
+</body>
+</html>
