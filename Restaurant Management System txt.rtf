@@ -1,0 +1,294 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 BodoniSvtyTwoOSITCTT-Bold;\f1\fnil\fcharset0 BodoniSvtyTwoOSITCTT-Book;\f2\fnil\fcharset77 ZapfDingbatsITC;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red229\green229\blue229;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c91857\c91857\c91857;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs29\fsmilli14667 \cf2 \cb3 \expnd0\expndtw0\kerning0
+import pickle\
+import random\
+L=[]\
+price=[]\
+#functions for admin login\
+def addrecord():\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf2 \cb3 try: 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 with open('ecar.dat','rb+')as F: L=pickle.load(F)\uc0\u8232 while True: 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 itemno=int(input('item no: ')) itemname=input('item name: ') itemprice=int(input('item price: ')) L1=[itemno, itemname, itemprice] L.append(L1) 
+\f1\b0\fs24 \cb3 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs29\fsmilli14667 \cf2 \cb3                 more=input('more?')\
+                if more in 'noNONo':\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf2 \cb3 break F.seek(0) 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 pickle.dump(L,F) 
+\f1\b0\fs24 \cb3 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs29\fsmilli14667 \cf2 \cb3             print('option 1')\
+    except:\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf2 \cb3 print('option 2')\uc0\u8232 L=[]\u8232 with open('ecar.dat','wb')as F: 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 while True:\uc0\u8232 itemno=int(input('item no: ')) itemname=input('item name: ') itemprice=int(input('item price: ')) L1=[itemno, itemname, itemprice] L.append(L1)\u8232 more=input('more?')\u8232 if more in 'noNONo': 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 break pickle.dump(L,F) 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 def displaymenu():\uc0\u8232 with open('ecar.dat','rb')as F: 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 data=pickle.load(F) for i in data: 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 print(i) 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 def editrecord():\uc0\u8232 with open('ecar.dat', 'rb+')as F: 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 L=pickle.load(F) while True: 
+\f1\b0\fs24 \cb3 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs29\fsmilli14667 \cf2 \cb3                 n=int(input('which item would you like to edit? (enter\
+item number) (enter 0 to exit)'))\
+                for i in L:\
+                    if i[0]==n:\
+                        print(i)\
+                        while True:\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf2 \cb3 reply=int(input('what would you like to edit? 1-refno, 2-name, 3-price, 4-complete record, 5-done')) 
+\f1\b0\fs24 \cb3 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs29\fsmilli14667 \cf2 \cb3         if n==0:\
+            break\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf2 \cb3 F.seek(0) pickle.dump(L,F) 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 def deleterecord():\uc0\u8232 with open('ecar.dat', 'rb+')as F: 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 L=pickle.load(F) while True: 
+\f1\b0\fs24 \cb3 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs29\fsmilli14667 \cf2 \cb3 if reply==1:\
+    newrefno=int(input('enter new refno'))\
+    for j in L:\
+        if j[0]==newrefno:\
+            print('refno already exists')\
+    else:\
+        i[0]=newrefno\
+if reply==2:\
+    newname=input('enter new name')\
+    i[1]=newname\
+if reply==3:\
+    newprice=int(input('enter new price'))\
+    i[2]=newprice\
+if reply==4:\
+    newrefno=int(input('enter new refno'))\
+    newname=input('enter new name')\
+    newprice=int(input('enter new price'))\
+    i[0]=newrefno\
+    i[1]=newname\
+    i[2]=newprice\
+    print('record changed')\
+    print('new record:',i)\
+if reply==5:\
+    break\
+            n=int(input('which record would you like to delete? (enter\
+item number)'))\
+            for i in L:\
+                if i[0]==n:\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf2 \cb3 print(i) L.remove(i) 
+\f1\b0\fs24 \cb3 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs29\fsmilli14667 \cf2 \cb3                     print('record deleted')\
+                    break\
+            else:\
+                print('item with reference number',n,'does not exist')\
+            more=input('would you like to continue?')\
+            if more in 'NOnoNo':\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf2 \cb3 break F.seek(0) 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 pickle.dump(L,F) 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 def searching():\uc0\u8232 with open('ecar.dat','rb')as F: 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 txt=pickle.load(F) while True: 
+\f1\b0\fs24 \cb3 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs29\fsmilli14667 \cf2 \cb3             rep=int(input('how would you like to navigate? 1: refno,\
+2: name, 3:price'))\
+            if rep==1:\
+                refno=int(input('enter refno'))\
+                for i in txt:\
+                    if i[0]==refno:\
+                        print(i)\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf2 \cb3 break else: 
+\f1\b0\fs24 \cb3 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs29\fsmilli14667 \cf2 \cb3                     print('record does not exist')\
+            if rep==2:\
+                count=0\
+                name=input('enter name of dish')\
+                for i in txt:\
+                    if i[1]==name:\
+                        print(i)\
+                        count+=1\
+                if count==0:\
+                    print('record does not exist')\
+            if rep==3:\
+                count1=0\
+                price=int(input('enter price of dish'))\
+                for i in txt:\
+                    if i[2]==price:\
+                        print(i)\
+                        count1+=1\
+                if count1==0:\
+                    print('record does not exist')\
+            more=input('would you like to continue searching?')\
+            if more in 'noNONo':\
+                break\
+#functions for customer of the restaurant\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf2 \cb3 def lookmenu():\uc0\u8232 with open("ecar.dat",'rb') as F: 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 data=pickle.load(F) print("Here is the menu:") for i in data: 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 print(i) 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 def whattoorder():\uc0\u8232 with open("ecar.dat",'rb') as F: 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 data=pickle.load(F) O=[]\uc0\u8232 global price price=[] 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 while True:\uc0\u8232 order=input("What would you like to order? (enter the 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 RefNo.)") 
+\f1\b0\fs24 \cb3 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs29\fsmilli14667 \cf2 \cb3 for i in range(0,len(data)):\
+    if int(order)==int(data[i][0]):\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf2 \cb3 O.append(data[i]) 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 price.append(data[i][2])\uc0\u8232 ask=input("Would you like to order something else?") if ask in "NOnoNon": 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 break\uc0\u8232 print("This is your order", O) 
+\f1\b0\fs24 \cb3 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs29\fsmilli14667 \cf2 \cb3 def generatebill():\
+    global price\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf2 \cb3 print("Your total bill comes out to be Rs.", sum(price)) try: 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 with open('earnings.dat','rb+')as F: L=pickle.load(F) L[0]+=sum(price)\uc0\u8232 F.seek(0) 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 pickle.dump(L,F) 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 except:\uc0\u8232 with open('earnings.dat','wb')as F: 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 L=[0] L[0]+=sum(price) pickle.dump(L,F) 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 def earnings():\uc0\u8232 with open('earnings.dat', 'rb')as F: 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 L=pickle.load(F)\uc0\u8232 print('total earnings =',sum(L)) 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 print("
+\f2\b0 \cb3 \uc0\u10084 
+\f1  
+\f0\b \cb3 Welcome to ECAR 
+\f2\b0 \cb3 \uc0\u10084 
+\f0\b \cb3 ") print('ADMIN LOGIN: 1, CUSTOMER: 2') reply=int(input('ADMIN LOGIN/ CUSTOMER?')) print()\uc0\u8232 if reply==1: 
+\f1\b0\fs24 \cb3 \
+
+\f0\b\fs29\fsmilli14667 \cb3 while True:\uc0\u8232 print('Admin Options:-')\u8232 print()\u8232 print('To add items in menu: 1\\nTo display menu: 2\\nTo edit 
+\f1\b0\fs24 \cb3 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs29\fsmilli14667 \cf2 \cb3 menu: 3\\nTo delete items from menu: 4\\nTo navigate through menu: 5\\nTo\
+Display total earnings: 6\\nTo LogOut: 7')\
+        p=int(input('Enter your choice'))\
+        if p==1:\
+            addrecord()\
+        elif p==2:\
+            displaymenu()\
+        elif p==3:\
+            editrecord()\
+        elif p==4:\
+            deleterecord()\
+        elif p==5:\
+            searching()\
+        elif p==6:\
+            earnings()\
+        elif p==7:\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf2 \cb3 break else: 
+\f1\b0\fs24 \cb3 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs29\fsmilli14667 \cf2 \cb3             print('invalid input, please try again')\
+elif reply==2:\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf2 \cb3 while True:\uc0\u8232 print('customer options:-') print() 
+\f1\b0\fs24 \cb3 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs29\fsmilli14667 \cf2 \cb3 print('To view the menu: 1\\nTo place an order: 2\\nTo generate\
+the bill: 3\\nIf you are done: 4')\
+        q=int(input('Enter your choice'))\
+        if q==1:\
+            lookmenu()\
+        elif q==2:\
+            whattoorder()\
+        elif q==3:\
+            generatebill()\
+        elif q==4:\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf2 \cb3 break else: 
+\f1\b0\fs24 \cb3 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs29\fsmilli14667 \cf2 \cb3             print('invalid input, please try again')\
+}
